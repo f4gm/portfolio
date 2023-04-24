@@ -53,6 +53,11 @@ header {
     color: #394867;
 }
 
+.active {
+    background-color: #F1F6F9;
+    color: #394867;
+}
+
 main {
     margin: 5% 15% 5% 15%;
     font-family: 'Raleway', sans-serif;
@@ -64,4 +69,3 @@ main {
     padding: 0;
     text-align: center;
 }
-
