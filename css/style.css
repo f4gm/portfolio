@@ -3,13 +3,19 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #F1F6F9;
 }
 
 main {
     margin: 5% 15% 5% 15%;
-    font-family: 'Raleway', sans-serif;
     color: #212A3E;
+}
+
+.nav-item{
+    text-align: center;
+}
+
+.web-name{
+    color: #A4D0A4;
 }
 
 .subtitle {
