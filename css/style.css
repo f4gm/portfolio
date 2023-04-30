@@ -6,58 +6,6 @@ body {
     background-color: #F1F6F9;
 }
 
-header {
-    border-bottom: solid 1px;
-    height: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #212A3E;
-}
-
-.logo {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    font-size: 32px;
-    font-family: 'Raleway', sans-serif;
-    left: 1.5%;
-    color: #F1F6F9;
-}
-
-.nav-container {
-    display: flex;
-    width: 95%;
-    list-style-type: none;
-    justify-content: flex-end;
-}
-
-.nav-item {
-    font-style: normal;
-    border-radius: 16px;
-    margin-left: 8px;
-    height: 32px;
-    width: 128px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Raleway', sans-serif;
-    text-decoration: none;
-    background-color: #394867;
-    color: #F1F6F9;
-}
-
-.nav-item:hover{
-    background-color: #F1F6F9;
-    color: #394867;
-}
-
-.active {
-    background-color: #F1F6F9;
-    color: #394867;
-}
-
 main {
     margin: 5% 15% 5% 15%;
     font-family: 'Raleway', sans-serif;
