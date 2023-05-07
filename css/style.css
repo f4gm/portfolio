@@ -3,11 +3,24 @@
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 main {
-    margin: 5% 15% 5% 15%;
+    margin: 0 15% 0 15%;
     color: #212A3E;
+    height: 80%;
+}
+
+#about-container {
+    overflow-y: scroll;
+    height: 80%;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-item{
