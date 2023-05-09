@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA SA Map</title>
+    <link rel="icon" type="image/x-icon" href="data/img/favicon.png">
+    <link rel="stylesheet" href="style/style.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+    
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand">
+</head>
+<body>
+    <header>
+        <img id="logo" src="data/img/logo.webp" alt="GTA SA Logo">
+    </header>
+    <div id="map">
+        <script>
+            // map generation and config
+            const map = L.map('map',{
+            crs: L.CRS.Simple,
+            minZoom: -2.5,
+            maxZoom: 1,
+            maxBoundsViscosity: 1
+            });
+
+            // icon class
+            const classIcon = L.Icon.extend({
+                options: {
+                    iconSize:     [32, 32],
+                    iconAnchor:   [16, 16],
+                    popupAnchor:  [0, 0]
+                }
+            });
+
+            // find coordinates by clicking
+            //var coords = L.popup();
+            //function xy(event) {
+            //    coords.setLatLng(event.latlng).setContent('[Y, X]: ' + event.latlng.toString()).openOn(map);
+            //};
+            //map.on('click', xy);
+
+            // map base
+            var bounds = [[0,0], [3072,3072]];
+            var image = L.imageOverlay('data/img/map.webp', bounds).addTo(map);
+            map.fitBounds(bounds);
+            map.setView([700, 2438], -1)
+
+            // some css classes
+            const button = '<button>Recoger</button>';
+            
+            // icon istances
+            const gunShopIcon = new classIcon({iconUrl: 'data/img/icons/radar_ammugun.webp'});
+            const burguerIcon = new classIcon({iconUrl: 'data/img/icons/radar_burgerShot.webp'});
+            const chickenIcon = new classIcon({iconUrl: 'data/img/icons/radar_chicken.webp'});
+            const pizzaIcon = new classIcon({iconUrl: 'data/img/icons/radar_pizza.webp'});
+            const graffitiIcon = new classIcon({iconUrl: 'data/img/icons/radar_graffiti.webp'});
+
+            // layers and layers groups
+            var gunShop1 = L.marker([514, 2762], {icon: gunShopIcon}).bindPopup('Ammu Nation'),
+                gunShop2 = L.marker([882, 2237], {icon: gunShopIcon}).bindPopup('Ammu Nation');
+            var gunShop = L.layerGroup([gunShop1, gunShop2]);
+            
+            var burger1 = L.marker([705, 1943], {icon: burguerIcon}).bindPopup('Burger Shot'),
+                burger2 = L.marker([1062, 2148], {icon: burguerIcon}).bindPopup('Burger Shot');
+            var burger = L.layerGroup([burger1, burger2]).addTo(map);
+
+            var chicken1 = L.marker([557, 2765], {icon: chickenIcon}).bindPopup("Cluckin' Bell"),
+                chicken2 = L.marker([762, 2770], {icon: chickenIcon}).bindPopup("Cluckin' Bell"),
+                chicken3 = L.marker([845, 2012], {icon: chickenIcon}).bindPopup("Cluckin' Bell");
+            var chicken = L.layerGroup([chicken1, chicken2, chicken3]).addTo(map);
+
+            var pizza1 = L.marker([609, 2618], {icon: pizzaIcon}).bindPopup('The Well Stacked Pizza Co.');
+            var pizza = L.layerGroup([pizza1]);
+
+            var graffiti1 = L.marker([682, 2773], {icon: graffitiIcon}).bindPopup(button),
+                graffiti2 = L.marker([745, 2791], {icon: graffitiIcon}).bindPopup(button);
+
+            var graffiti = L.layerGroup([graffiti1, graffiti2]);
+
+            // layers pane
+            var baseLayers = {
+                'San Andreas': image
+            };
+
+            var overlays = {
+                'Ammu Nation': gunShop,
+                'Burger Shot': burger,
+                "Cluckin' Bell": chicken,
+                'The Well Stacked Pizza Co.': pizza,
+                'Graffiti': graffiti
+            };
+
+            var layerControl = L.control.layers(baseLayers, overlays, {
+                position: 'topright'
+            }).addTo(map);
+        </script>
+    </div>
+    <footer>
+        <p>Hecho por: Fernando Andres Giraldo Mejia - 1930707</p>
+    </footer>
+</body>
+</html>

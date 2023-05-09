@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+main {
+    color: #212A3E;
+    height: 75%;
+}
+
+.icon-color{
+    color: #394867;
+}
+
+#about-container {
+    overflow-y: scroll;
+    height: 80%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+#about-container .list-group-item {
+    background-color: #F1F6F9;
+}
+
+#about-nav .nav-item .nav-link.active {
+    background-color: #212A3E;
+    color: #F1F6F9;
+}
+
+#about-nav .nav-item .nav-link {
+    color: #212A3E;
+}

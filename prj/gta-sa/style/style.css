@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+header {
+    height: 15%;
+    background-color: black;
+    position: relative;
+    border: solid white;
+    border-width: 0 0 1px 0;
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    text-align: center;
+    border: solid white;
+    border-width: 1px 0 0 0;
+}
+
+p {
+    font-family: 'Quicksand';
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.button {
+    background-color: orange;
+    font-family: 'Quicksand';
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid white;
+    position: absolute;
+    height: 25%;
+    top: 37.5%;
+    right: 5%;
+}
+
+.button:hover {
+    background-color: orangered;
+}
+
+#map {
+    height: 85%;
+    width: 100%;
+    position: relative;
+    background-color: #6888a7;
+}
+
+#logo {
+    margin: 0;
+    padding: 0;
+    height: 95%;
+    position: absolute;
+    left: 5%;
+    top: 2.5%;
+}
