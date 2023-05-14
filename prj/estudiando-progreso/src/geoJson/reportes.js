@@ -1,0 +1,26 @@
+var reportes_geoJson = {
+"type": "FeatureCollection",
+"name": "reportes",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "latitud": 3.375136561, "longitud": -76.54248163, "direccion": "Cra. 96 #5-09", "clase": null, "contiene": "Plástico, Cartón" }, "geometry": { "type": "Point", "coordinates": [ -76.54248163, 3.375136561 ] } },
+{ "type": "Feature", "properties": { "id": 2, "latitud": 3.373225787, "longitud": -76.54709201, "direccion": "Cra. 96 #4-04", "clase": null, "contiene": "Escombros, Arena" }, "geometry": { "type": "Point", "coordinates": [ -76.54709201, 3.373225787 ] } },
+{ "type": "Feature", "properties": { "id": 3, "latitud": 3.371963651, "longitud": -76.54701591, "direccion": "Cl. 4 #98-13", "clase": null, "contiene": "Plástico, Icopor, Vidrio, Orgánicos" }, "geometry": { "type": "Point", "coordinates": [ -76.54701591, 3.371963651 ] } },
+{ "type": "Feature", "properties": { "id": 4, "latitud": 3.372855949, "longitud": -76.54531572, "direccion": "Cl. 4b #95-82", "clase": null, "contiene": "Plástico, Icopor" }, "geometry": { "type": "Point", "coordinates": [ -76.54531572, 3.372855949 ] } },
+{ "type": "Feature", "properties": { "id": 5, "latitud": 3.374110052, "longitud": -76.54902454, "direccion": "Calle 5Norte No. 1N - 95", "clase": null, "contiene": null }, "geometry": { "type": "Point", "coordinates": [ -76.54902454, 3.374110052 ] } },
+{ "type": "Feature", "properties": { "id": 6, "latitud": 3.375058242, "longitud": -76.54610764, "direccion": "Cl. 4b #93-90", "clase": null, "contiene": "Plástico" }, "geometry": { "type": "Point", "coordinates": [ -76.54610764, 3.375058242 ] } },
+{ "type": "Feature", "properties": { "id": 7, "latitud": 3.375264079, "longitud": -76.54259831, "direccion": "Cra. 100 #94-50", "clase": null, "contiene": "Plástico, Ropa" }, "geometry": { "type": "Point", "coordinates": [ -76.54259831, 3.375264079 ] } },
+{ "type": "Feature", "properties": { "id": 8, "latitud": 3.377203967, "longitud": -76.54640839, "direccion": "Cra. 92 #451", "clase": null, "contiene": "Escombros, Arena" }, "geometry": { "type": "Point", "coordinates": [ -76.54640839, 3.377203967 ] } },
+{ "type": "Feature", "properties": { "id": 9, "latitud": 3.377753534, "longitud": -76.54669169, "direccion": "Cra. 91 #4-9", "clase": null, "contiene": "Escombros, Arena" }, "geometry": { "type": "Point", "coordinates": [ -76.54669169, 3.377753534 ] } },
+{ "type": "Feature", "properties": { "id": 10, "latitud": 3.379330275, "longitud": -76.54516183, "direccion": "Cra. 87 #4-100", "clase": null, "contiene": "Ropa, Cartón, Plástico" }, "geometry": { "type": "Point", "coordinates": [ -76.54516183, 3.379330275 ] } },
+{ "type": "Feature", "properties": { "id": 11, "latitud": 3.378008571, "longitud": -76.54546928000001, "direccion": "Cl. 4c #89-28", "clase": null, "contiene": "Ladrillos, Escombros, Madera, Tela" }, "geometry": { "type": "Point", "coordinates": [ -76.54546928, 3.378008571 ] } },
+{ "type": "Feature", "properties": { "id": 12, "latitud": 3.377503518, "longitud": -76.54549677, "direccion": "Cl. 4c #90-30", "clase": null, "contiene": "Madera, Costales, Plástico" }, "geometry": { "type": "Point", "coordinates": [ -76.54549677, 3.377503518 ] } },
+{ "type": "Feature", "properties": { "id": 13, "latitud": 3.376177126, "longitud": -76.54608853000001, "direccion": "Cl. 4b #93-24", "clase": null, "contiene": "Plástico, Escombros, Sanitario" }, "geometry": { "type": "Point", "coordinates": [ -76.54608853, 3.376177126 ] } },
+{ "type": "Feature", "properties": { "id": 14, "latitud": 3.377628024, "longitud": -76.54926494, "direccion": "Cra. 92 #2c - 30", "clase": null, "contiene": "Escombros" }, "geometry": { "type": "Point", "coordinates": [ -76.54926494, 3.377628024 ] } },
+{ "type": "Feature", "properties": { "id": 15, "latitud": 3.377728767, "longitud": -76.54956635000001, "direccion": "Cra. 92 #2c - 30", "clase": null, "contiene": "Postes" }, "geometry": { "type": "Point", "coordinates": [ -76.54956635, 3.377728767 ] } },
+{ "type": "Feature", "properties": { "id": 16, "latitud": 3.377550375, "longitud": -76.54968604, "direccion": "Cra. 92 #2c - 30", "clase": null, "contiene": null }, "geometry": { "type": "Point", "coordinates": [ -76.54968604, 3.377550375 ] } },
+{ "type": "Feature", "properties": { "id": 17, "latitud": 3.377242122, "longitud": -76.54981479, "direccion": "Cra. 93 #22", "clase": null, "contiene": "Madera, Plástico, Espuma, Ropa" }, "geometry": { "type": "Point", "coordinates": [ -76.54981479, 3.377242122 ] } },
+{ "type": "Feature", "properties": { "id": 18, "latitud": 3.376331754, "longitud": -76.55018494, "direccion": "Cra. 94 #2b34", "clase": null, "contiene": "Escombros" }, "geometry": { "type": "Point", "coordinates": [ -76.55018494, 3.376331754 ] } },
+{ "type": "Feature", "properties": { "id": 19, "latitud": 3.37537821, "longitud": -76.54804017, "direccion": "Cl. 3b #93-19", "clase": null, "contiene": null }, "geometry": { "type": "Point", "coordinates": [ -76.54804017, 3.37537821 ] } }
+]
+};
