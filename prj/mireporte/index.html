@@ -4,44 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Ecologico</title>
-    <link rel="stylesheet" href="./css/main.css">
-
+    <title>MiReporte | Mapa</title>
+    <link rel="stylesheet" href="./css/map.css">
+    <link rel="stylesheet" href="./css/elements.css">
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <!-- Leaflet 1.9.3 -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-
     <!-- Bootstrap 5.3.0 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
 </head>
-<body id="body">
+<body id="body" style="font-family: 'Jost', sans-serif;">
     <header>
-        <nav class="navbar bg-body-tertiary fixed-top" style="font-family: 'Wix Madefor Display', sans-serif;">
+        <nav class="navbar bg-body-tertiary fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/prj/reporte-ecologico/index.html">
-                    ECOMAPA
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./data/img/logo.svg" alt="" height="60px">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 1.5rem; font-weight: 600;">Menú</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/prj/reporte-ecologico/index.html">Inicio</a>
+                            <li class="nav-item p">
+                                <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                            <li class="nav-item p">
+                                <a class="nav-link" href="./p/blog/index.html">Blog</a>
+                            </li>
+                            <li class="nav-item p">
+                                <a class="nav-link" href="./p/contacto/">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -49,236 +49,55 @@
             </div>
           </nav>
     </header>
-
-    <!-- Div donde se almacena el mapa -->
     <main>
+        <!-- Div donde se almacena el mapa -->
         <div id="map"></div>
-
         <!-- Panel de atributos -->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvas-titulo">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="pan" aria-labelledby="panTitle">
             <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvas-titulo">Title</h5>
+            <h5 class="offcanvas-title" id="panTitle"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body" id="offcanvas-contenido">
+            <div class="offcanvas-body" id="panContent">
             </div>
         </div>
-    
         <!-- Modal para hacer reportes -->
-        <div class="modal fade" id="reporte" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea reportar este lugar?</h1>
-                <button id="cerrar-reporte" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="eliminarMarcador()"></button>
+                <h1 class="modal-title fs-5" id="reportModalTitle">¿Desea reportar este lugar?</h1>
+                <button id="closeReport" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="removeMarker(1)"></button>
                 </div>
                 <div class="modal-body">
                     ¡Gracias por tomar la decisión de reportar! Si estas seguro de la posición presiona el botón Reportar, de lo contrario puedes verificar la posición en Google Street View.
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary" id="boton-reporte" role="button">¡Reportar!</a>
-                    <a class="btn btn-secondary" target="_blank" id="boton-street" role="button">Ver en Google</a>
+                    <a class="btn btn-success" target="_blank" id="reportBtn" role="button">¡Reportar!</a>
+                    <a class="btn btn-secondary" target="_blank" id="googleViewBtn" role="button">Ver en Google</a>
                 </div>
-            </div>
             </div>
         </div>
     </main>
     <footer class="bg-light text-center text-dark">
         <div class="text-center text-dark p-3">
           © 2023 Copyright:
-          <a class="text-dark" href="https://gisfer.net">gisfer.net</a>
+          <a class="text-dark" href="https://gisfer.net/prj/mireporte/">MiReporte</a>
         </div>
     </footer>
-    
-
     <!-- Importe de capas en GeoJson -->
     <!--    Puntos de acumulacion de residuos -->
     <script src="./data/geoJson/reportes.js"></script>
-
     <!--    Puntos de recogida -->
 
     <!--    Rutas del camión -->
 
     <!--    Barrios -->
     <script src="./data/geoJson/barrios.js"></script>
-
-    <script>
-        // Clases
-        //  Icono de marcadores: Marcadores cuando se seleciona una posición para reportar
-        var markerIcon = L.icon({
-            iconUrl: './data/img/icons/mk-report.webp',
-            iconSize: [48, 48],
-            iconAnchor: [24, 48],
-            popupAnchor: [0, -42]
-        });
-
-        var reportes = L.icon({
-            iconUrl: './data/img/icons/trash.webp',
-            iconSize: [32, 32],
-            iconAnchor: [16, 16]
-        });
-
-        // Funciones
-        //  Constructor de rutas Google Maps: Construye la ruta para llegar al punto indicado con Google Maps
-        function constructorRutasGoogle(latitud, longitud) {
-            rutaGoogle = "https://www.google.com/maps/dir//" + latitud + "," + longitud + "/@" + latitud + "," + longitud + ",19z";
-            return rutaGoogle
-        };
-
-        //  Constructor de rutas Google Street Maps: Construye la ruta que dirige al punto en Google Street Maps
-        function constructorRutasStreet(latitud, longitud) {
-            rutaStreet = "http://maps.google.com/maps?q=&layer=c&cbll=" + latitud + "," + longitud;
-            return rutaStreet
-        };
-
-        //  Abrir panel: Abre el panel de atributos al presionar sobre una feature
-        function abrirPanelPunto(event) {
-            var punto = document.getElementsByClassName("leaflet-marker-icon")[parseInt(event.target.feature.properties.id) - 1];
-            //punto.setAttribute("role", "button")
-            punto.setAttribute("data-bs-toggle", "offcanvas");
-            punto.setAttribute("data-bs-target", "#offcanvasExample");
-            //console.log(punto);
-        };
-
-        //  Mostrar atributos: Funciones para mostrar los atributos segun la capa de informacion
-        //      Atributos de reportes: Muestra los atributos de los reportes anteriores hechos por otros usuarios
-
-        //      Atributos de puntos de recogida: Muestra los atributos de las zonas donde se pueden depositar residups
-        function atributosReportes(feature) {
-            var titulo = document.getElementById("offcanvas-titulo")
-            titulo.innerHTML = "Identificación del reporte: " + feature.properties.id;
-
-            var contenido = document.getElementById("offcanvas-contenido");
-            rutaImagen = "./data/img/reportes/";
-            rutaGoogle = constructorRutasGoogle(feature.properties.latitud, feature.properties.longitud);
-            contenido.innerHTML = "<img id='imagen' src=" + "'" + rutaImagen + feature.properties.id + ".webp'" + " class='rounded img-fluid'" + " alt='Imagen del reporte número "+ feature.properties.id + "'>" + 
-                "<p class='lead'><strong>Dirección: </strong>" + feature.properties.direccion + "</p>" +
-                "<p class='lead'><strong>Clase: </strong>" + feature.properties.clase + "</p>" +
-                "<p class='lead'><strong>Contiene: </strong>" + feature.properties.contiene + "</p>" +
-                "<a class='btn btn-primary' target='_blanck' href='" + rutaGoogle + "'role='button'>¿Cómo llegar?</a>";
-        };
-
-        //      Atrobutos rutas: Muestra los atributos de las rutas de los camión de basura
-
-        //      Atributos de barrios: Muestra los atributos de los barrios en el panel
-        function atributosBarrios(feature) {
-            var titulo = document.getElementById("offcanvas-titulo")
-            titulo.innerHTML = "Nombre del barrio: " + feature.properties.barrio;
-
-            var contenido = document.getElementById("offcanvas-contenido");
-            contenido.innerHTML = "<p class='lead'> Identificación catastral: " + feature.properties.id_barrio + "</p>";
-        };
-
-        //  Abrir modal: Abre la ventana con información adicional sobre el punto que se desea reportar
-        function abrirModal(latitud, longitud) {
-            var body = document.getElementById("body");
-            body.setAttribute("class", "modal-open");
-            body.setAttribute("data-bs-padding-right", "0px");
-
-            var modal = document.getElementById("reporte");
-            modal.removeAttribute("aria-hidden", "true");
-            modal.classList.add('show');
-            modal.setAttribute("aria-modal", "true");
-            modal.setAttribute("role", "dialog");
-            modal.setAttribute("style", "display: block;");
-
-            var botonStreet = document.getElementById("boton-street");
-            botonStreet.setAttribute("href", constructorRutasStreet(latitud, longitud));
-            botonStreet.setAttribute("target", "_blanck");
-
-            var divFade = document.createElement("div");
-            divFade.classList.add("offcanvas-backdrop", "fade", "show");
-            divFade.setAttribute("id", "borrar");
-            body.appendChild(divFade);
-        };
-
-        //  Cerrar modal: Cierra la ventana de reportes y elimina el marcador creado
-        function eliminarMarcador() {
-            document.querySelectorAll("#borrar-marcador").forEach(el => el.remove());
-            document.querySelectorAll(".leaflet-popup").forEach(el => el.remove());
-        };
-
-        // Inicializando clases
-
-        const map = L.map('map');
-
-        // Capas de informacion
-        //  Mapas base
-        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        });
-
-        const esriWorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-        });
-
-        const esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-        });
-
-        //  Capas
-        
-        var barrios = L.geoJson(barrios_geoJson);
-
-        var reportes = L.geoJson(reportes_geoJson, {
-            onEachFeature: function (feature, layer) {
-                layer.on('mouseover', function(ev) {
-                    abrirPanelPunto(ev);
-                    atributosReportes(ev.target.feature);
-                });
-            },
-            pointToLayer: function(geoJsonPoint, latlng) {
-                return L.marker(latlng, {icon: reportes});
-            }
-        });
-
-        // Grupo de capas
-        var mapasBase = {
-            'OpenStreetMaps': osm,
-            'Esri World Street Map': esriWorldStreetMap,
-            'Esri World Imagery': esriWorldImagery
-        };
-
-        var capas = {
-            'Barrios': barrios,
-            'Reportes': reportes
-        };
-
-        var grupoCapas = L.control.layers(mapasBase, capas, {collape: 'false'});
-
-        // Ajustes
-        osm.addTo(map);
-        reportes.addTo(map);
-
-        map.setView([3.37489,-76.54741], 16);
-        
-        var marcador = L.marker([0, 0], {icon: markerIcon});
-        map.on('contextmenu', function (event) {
-            if (event.latlng.lat != marcador._latlng.lat && event.latlng.lng != marcador._latlng.lng) {
-                marcador.remove();
-                marcador = L.marker([event.latlng.lat, event.latlng.lng], {icon: markerIcon});
-                marcador.addTo(map);
-                marcador.getElement().setAttribute("id", "borrar-marcador");
-
-                var botonStreet = document.getElementById("boton-street");
-                botonStreet.setAttribute("href", constructorRutasStreet(event.latlng.lat, event.latlng.lng))
-            };
-            marcador.bindPopup('<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reporte">¡Reportar!</button>').openPopup();
-        });
-
-        map.on('click', function(event, punto=marcador) {
-            eliminarMarcador();
-        });
-
-        
-
-        grupoCapas.addTo(map);
-
-        L.control.scale({
-            metric: true
-        }).addTo(map);
-    </script>
+    <!-- Funciones y clases -->
+    <script src="./js/main.js"></script>
+    <!-- Configuracion -->
+    <script src="./js/config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
