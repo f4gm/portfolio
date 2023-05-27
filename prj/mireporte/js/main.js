@@ -130,3 +130,11 @@ function form(lat, lon, type) {
     }
     return formUrl
 };
+
+// Estilos
+var barriosStyle = {
+    'fillColor': 'rgba(2, 195, 154, 0.5)',
+    'color': '#02c39a',
+    'opacity': 1,
+    'weight': 2
+};

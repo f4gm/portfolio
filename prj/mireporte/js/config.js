@@ -14,7 +14,12 @@ const esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/res
 });
 
 //  Capas
-var barrios = L.geoJson(barrios_geoJson);
+var barrios = L.geoJson(barrios_geoJson, {
+    style: barriosStyle,
+    onEachFeature: function(feature, layer) {
+        layer.bindPopup('<p style="font-family:' + "'Jost'" + ', sans-serif;">' + feature.properties.barrio + '</p>')
+    }
+});
 
 var reportes = L.geoJson(reportes_geoJson, {
     onEachFeature: function (feature, layer) {
@@ -57,6 +62,17 @@ grupoCapas.addTo(map);
 
 L.control.scale({
     metric: true
+}).addTo(map);
+
+L.easyButton({
+    states: [{
+        icon: 'bi bi-house-door-fill',
+        title: 'Restaurar vista',
+        onClick: function(btn, map) {
+            map.setView(reportes.getBounds().getCenter(), 17);
+        }
+    }],
+    position: 'topleft'
 }).addTo(map);
 
 var userLoc = L.control.locate({
