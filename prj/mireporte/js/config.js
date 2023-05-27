@@ -58,3 +58,19 @@ grupoCapas.addTo(map);
 L.control.scale({
     metric: true
 }).addTo(map);
+
+var userLoc = L.control.locate({
+    flyTo: true,
+    drawMarker: false,
+    drawCircle: false,
+    cacheLocation: true,
+    locateOptions: {
+        enableHighAccuracy: true
+    }
+}).addTo(map);
+
+map.on('locationfound', function (event) {
+    mkReport(event);
+    console.log('Location found!');
+    setTimeout(() => {userLoc.stop();}, 3000);
+});

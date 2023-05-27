@@ -94,6 +94,7 @@ function removeMarker(pop) {
     if (pop == 1) {
         document.querySelectorAll(".leaflet-popup").forEach(el => el.remove());
     }
+    userLoc.stop();
 };
 
 //  Programacion del reporte
