@@ -28,7 +28,7 @@ function zoomToLayer(event) {
 };
 
 function generalZoom() {
-    map.flyToBounds(departamentos.getBounds());
+    map.flyToBounds(colombia.getBounds());
 }
 
 function showPathRow(event) {
@@ -54,7 +54,7 @@ const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-const departamentos = L.geoJson(departamentosGJS);
+const colombia = L.geoJson(colombiaGJS);
 
 const wrs1_ascending = L.geoJson(wrs1_ascendingGJS, {
     style: pathRowLayerStyle,
@@ -128,7 +128,7 @@ const wrs2_descending = L.geoJson(wrs2_descendingGJS,{
 // Maps
 
 var map = L.map('map', {
-    center: departamentos.getBounds().getCenter(), 
+    center: colombia.getBounds().getCenter(), 
     zoom: 5,
     layers: [osm, wrs2_descending]
 });
